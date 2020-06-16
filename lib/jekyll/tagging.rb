@@ -147,6 +147,7 @@ module Jekyll
 
 	  if (desc = site.data["tagdesc"][t])
 		  desc = desc.gsub(/"/, '\\"')
+	  end
 
       tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag', :title => desc) if t.is_a?(String) }.compact!
       tags.join(', ')
