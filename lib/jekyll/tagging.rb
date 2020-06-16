@@ -106,7 +106,10 @@ module Jekyll
       self.content = data.delete('content') || ''
       self.data    = data
 
-	  self.data['title'] = data['tag'].gsub(/(\p{Lu}|\d+)/, ' \1').sub('Dr ', "Dr. ").strip
+      if (tag_override = site.data['tagtitle'][data['tag']])
+        self.data['title'] = tag_override
+      else
+        self.data['title'] = data['tag'].gsub(/(\p{Lu}|\d+)/, ' \1').sub('Dr ', "Dr. ").strip
 
       super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
     end
