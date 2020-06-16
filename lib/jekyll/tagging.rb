@@ -1,6 +1,7 @@
 require 'nuggets/range/quantile'
 require 'nuggets/i18n'
 require 'erb'
+require 'pry'
 
 module Jekyll
 
@@ -48,6 +49,7 @@ module Jekyll
     def new_tag(tag, posts)
       self.class.types.each { |type|
         if layout = site.config["tag_#{type}_layout"]
+		  binding.pry
           data = { 'layout' => layout, 'posts' => posts.sort.reverse!, 'tag' => tag, 'last_modified_at' => posts.max_by { |e| e.data['last_modified_at'] }['last_modified_at'] }
           data.merge!(site.config["tag_#{type}_data"] || {})
 
