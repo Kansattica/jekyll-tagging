@@ -144,7 +144,7 @@ module Jekyll
     def tags(obj, site = Tagger.site)
       tags = obj['tags'].dup
       tags.map! { |t| t.first } if tags.first.is_a?(Array)
-      tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag', :title => site.data["tagdesc"][t].gsub(/"/, '\\"') if t.is_a?(String) }.compact!
+      tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag', :title => site.data["tagdesc"][t].gsub(/"/, '\\"')) if t.is_a?(String) }.compact!
       tags.join(', ')
     end
 
