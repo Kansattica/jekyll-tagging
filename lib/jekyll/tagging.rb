@@ -150,7 +150,7 @@ module Jekyll
 
 	def escape_if_not_nil(str)
 		return nil if not str
-		str.gsub(/"/, '\\"')
+		str.gsub(/"/, '&quot;')
 	end
 		
 
