@@ -49,7 +49,7 @@ module Jekyll
       self.class.types.each { |type|
         if layout = site.config["tag_#{type}_layout"]
 		  last_modified = posts.max_by { |e| e.data['last_modified_at'].last_modified_at_time };
-          data = { 'layout' => layout, 'posts' => posts.sort.reverse!, 'tag' => tag, 'last_modified_at' => last_modified.data['last_modified_at'], 'date_modified' => last_modified.last_modified_at_time }
+          data = { 'layout' => layout, 'posts' => posts.sort.reverse!, 'tag' => tag, 'last_modified_at' => last_modified.data['last_modified_at'], 'date_modified' => last_modified.data['last_modified_at'].last_modified_at_time }
           data.merge!(site.config["tag_#{type}_data"] || {})
 
           name = yield data if block_given?
