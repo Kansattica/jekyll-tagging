@@ -109,7 +109,7 @@ module Jekyll
       if (tag_override = site.data['tagtitle'][data['tag']])
         self.data['title'] = tag_override
       else
-        self.data['title'] = data['tag'].gsub(/(\p{Lu}|\d+)/, ' \1').sub('Dr ', "Dr. ").strip
+        self.data['title'] = data['tag'].gsub(/(\p{Lu}|\d+)/, ' \1').strip
       end
 
       super(site, base, dir[-1, 1] == '/' ? dir : '/' + dir, name)
