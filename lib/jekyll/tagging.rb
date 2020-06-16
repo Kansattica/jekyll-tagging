@@ -143,7 +143,7 @@ module Jekyll
     end
 
     def tags(obj, site = Tagger.site)
-	  pry.binding
+	  binding.pry
       tags = obj['tags'].dup
       tags.map! { |t| t.first } if tags.first.is_a?(Array)
       tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag') if t.is_a?(String) }.compact!
