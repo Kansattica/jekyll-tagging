@@ -1,6 +1,7 @@
 require 'nuggets/range/quantile'
 require 'nuggets/i18n'
 require 'erb'
+require 'pry'
 
 module Jekyll
 
@@ -141,7 +142,8 @@ module Jekyll
       site.permalink_style == :pretty || site.config['tag_permalink_style'] == 'pretty' ? url << '/' : url << '.html'
     end
 
-    def tags(obj)
+    def tags(obj, site = Tagger.site)
+	  pry.binding
       tags = obj['tags'].dup
       tags.map! { |t| t.first } if tags.first.is_a?(Array)
       tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag') if t.is_a?(String) }.compact!
