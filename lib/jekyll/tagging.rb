@@ -144,14 +144,15 @@ module Jekyll
     def tags(obj, site = Tagger.site)
       tags = obj['tags'].dup
       tags.map! { |t| t.first } if tags.first.is_a?(Array)
-
-	  if (desc = site.data["tagdesc"][t])
-		  desc = desc.gsub(/"/, '\\"')
-	  end
-
-      tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag', :title => desc) if t.is_a?(String) }.compact!
+      tags.map! { |t| tag_link(t, tag_url(t), :rel => 'tag', :title => escape_if_not_nil(site.data["tagdesc"][t])) if t.is_a?(String) }.compact!
       tags.join(', ')
     end
+
+	def escape_if_not_nil(str)
+		return nil if not str
+		str.gsub(/"/, '\\"')
+	end
+		
 
     def keywords(obj)
       return '' if not obj['tags']
